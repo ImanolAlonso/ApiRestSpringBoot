@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Libros</title>
+    <!-- Las rutas en Thymeleaf son relativas al directorio static -->
+</head>
+<body>
+    <table>
+        <caption>Listado de Libros</caption>
+        <thead>
+            <tr>
+                <th>Nombre</th><th>Stock</th><th>Nombre de Imagen</th><th>FotoDisco</th><th>FotoBlob</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="libro : ${listaLibros}">
+                <td th:text="${libro.nombre}"></td>
+                <td th:text="${libro.stock}"></td>
+                <td th:text="${libro.imagen}"></td>
+                <td id="disco"><img style="width:180px;height:150px;" th:src="@{'/imagenes/' + ${libro.imagen} + ''}" alt="Imagen Ejemplo Disco" /></td>
+                <td id="blob"><img style="width:180px;height:150px;" th:src="@{'/libro/foto/' + ${libro.id} + ''}" alt="Imagen Ejemplo Blob" /></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
